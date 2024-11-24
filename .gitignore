@@ -1,4 +1,9 @@
 .venv
 .env
+.DS_Store
 
 tests/
+
+exploration/checkpoint*
+exploration/setfit_models/
+
