@@ -1,59 +1,50 @@
-import pandas as pd
-from sklearn.preprocessing import LabelEncoder
-from setfit import SetFitModel
-from utils.constants import DATA_PATH, SETFIT_MODELS_PATH, UTILS_PATH
+import os
+from utils.constants import TFIDF_MODELS_PATH, DATA_PATH
+from models.base import TextClassifier, EvaluationMetrics
 import sys
 from typing import List, Dict, Any
 import time
+from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
-from setfit import SetFitModel
 import joblib
-import os
-from models.base import TextClassifier, EvaluationMetrics
+import pandas as pd
 
-class SetfitClassifier(TextClassifier):
+
+class TfidfClassifier(TextClassifier):
     def __init__(self, model_path: str):
         self.model_path: str = model_path
-        self.model: SetFitModel = self.load_model()
+        self.model: Pipeline = self.load_model()
         self.label_encoder = self.load_label_encoder()
 
-    @staticmethod
-    def get_available_models() -> list:
-        return os.listdir(SETFIT_MODELS_PATH)
-
-    def load_model(self) -> SetFitModel:
+    def load_model(self) -> Pipeline:
         try:
-            if not os.path.exists(SETFIT_MODELS_PATH + self.model_path):
-                print(f"Model not saved locally, checking Hugging Face Hub for model: {self.model_path}")
-                model = SetFitModel.from_pretrained(self.model_path)
-            else:
-                print(f"Loading local model from: {SETFIT_MODELS_PATH + self.model_path}")
-                model = SetFitModel.from_pretrained(SETFIT_MODELS_PATH + self.model_path)
+            model = joblib.load(f"{TFIDF_MODELS_PATH}/{self.model_path}/tfidf_model.joblib")
             return model
         except Exception as e:
-            print(f"Error loading model: {e}")
+            print(f"Error loading TF-IDF model: {e}")
             sys.exit(1)
 
-    def load_label_encoder(self) -> LabelEncoder:
+    def load_label_encoder(self):
         try:
-            label_encoder = joblib.load(UTILS_PATH + 'label_encoder.joblib')
+            label_encoder = joblib.load(f"{TFIDF_MODELS_PATH}/{self.model_path}/label_encoder.joblib")
             return label_encoder
         except Exception as e:
             print(f"Error loading label encoder: {e}")
             sys.exit(1)
 
-    def predict(self, texts: List[str]) -> List[int]:
+    def predict(self, texts: List[str]) -> List[str]:
         start_time = time.time()
-        predictions = self.model.predict(texts)
+        X = texts
+        predictions = self.model.predict(X)
         end_time = time.time()
         elapsed_time = end_time - start_time
-        
-        print(f"Prediction time: {elapsed_time:.4f} seconds")
-
+        if len(texts) == 1:
+            print(f"Prediction time: {elapsed_time:.4f} seconds")
+        # Decode the numerical predictions to original labels
         decoded_predictions = self.label_encoder.inverse_transform(predictions)
         return decoded_predictions.tolist()
-    
-    def evaluate(self, texts: List[str], true_labels: List[int]) -> EvaluationMetrics:
+
+    def evaluate(self, texts: List[str], true_labels: List[str]) -> EvaluationMetrics:
         predictions = self.predict(texts)
         accuracy = accuracy_score(true_labels, predictions)
         precision = precision_score(true_labels, predictions, average='weighted', zero_division=0)
@@ -68,7 +59,7 @@ class SetfitClassifier(TextClassifier):
             f1_score=f1,
             report=report
         )
-    
+
     @staticmethod
     def load_dataset(csv_file: str, text_column: str, label_column: str) -> Dict[str, List[Any]]:
         texts: List[str] = []
@@ -83,3 +74,7 @@ class SetfitClassifier(TextClassifier):
         except Exception as e:
             print(f"Error loading dataset: {e}")
             sys.exit(1)
+
+    @staticmethod
+    def get_available_models() -> list:
+        return os.listdir(TFIDF_MODELS_PATH)

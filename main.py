@@ -1,31 +1,35 @@
 import argparse
-from models.setfit import TextClassifier
+from models.factory import ClassifierFactory
 import warnings
 from urllib3.exceptions import NotOpenSSLWarning
 warnings.filterwarnings("ignore", category=NotOpenSSLWarning)
 import sys
 
 def main():
-    available_models = TextClassifier.get_available_models()
+    setfit_models = ClassifierFactory.get_available_models('setfit')
+    tfidf_models = ClassifierFactory.get_available_models('tfidf')
 
     parser = argparse.ArgumentParser(
-        description="SetFit Text Classifier CLI",
+        description="Text Classifier CLI",
         formatter_class=argparse.RawTextHelpFormatter,
-        epilog=f"Local Models:\n - " + "\n - ".join(available_models)
+        epilog=f"Available SetFit Models: {setfit_models}\nAvailable TF-IDF Models: {tfidf_models}"
     )
     subparsers = parser.add_subparsers(dest='command', help='Commands')
 
+    # Common arguments
+    common_parser = argparse.ArgumentParser(add_help=False)
+    common_parser.add_argument('--classifier_type', type=str, default='setfit', choices=['setfit', 'tfidf'], help='Type of classifier to use.')
+    common_parser.add_argument('--model_path', type=str, default='saved_model/', help='Path or identifier of the model to use.')
+
     # Predict Command
-    predict_parser = subparsers.add_parser('predict', help='Predict labels for input texts')
+    predict_parser = subparsers.add_parser('predict', help='Predict labels for input texts', parents=[common_parser])
     predict_parser.add_argument('texts', nargs='+', help='Input text(s) to classify.')
-    predict_parser.add_argument('--model_path', type=str, default='setfit_models/', help='Path to the saved model.')
 
     # Evaluate Command
-    evaluate_parser = subparsers.add_parser('evaluate', help='Evaluate the model on a test CSV dataset')
+    evaluate_parser = subparsers.add_parser('evaluate', help='Evaluate the model on a test CSV dataset', parents=[common_parser])
     evaluate_parser.add_argument('csv_file', type=str, help='Path to the test dataset CSV file.')
     evaluate_parser.add_argument('--text_column', type=str, default='text', help='Name of the text column in the CSV.')
     evaluate_parser.add_argument('--label_column', type=str, default='label', help='Name of the label column in the CSV.')
-    evaluate_parser.add_argument('--model_path', type=str, default='setfit_models/', help='Path to the saved model.')
 
     args = parser.parse_args()
 
@@ -33,7 +37,7 @@ def main():
         parser.print_help()
         sys.exit(1)
 
-    classifier = TextClassifier(model_path=args.model_path)
+    classifier = ClassifierFactory.create_classifier(args.classifier_type, args.model_path)
 
     if args.command == 'predict':
         predictions = classifier.predict(args.texts)

@@ -8,5 +8,6 @@ exploration/checkpoint*
 exploration/setfit_models/
 exploration/tmp*
 
-models/local_models/
+models/setfit_local_models/
+models/tfidf_local_models/
 
