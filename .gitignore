@@ -11,3 +11,4 @@ exploration/tmp*
 models/setfit_local_models/
 models/tfidf_local_models/
 
+checkpoints/

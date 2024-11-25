@@ -39,7 +39,7 @@ class SetfitClassifier(TextClassifier):
 
     def load_label_encoder(self) -> LabelEncoder:
         try:
-            label_encoder = joblib.load(UTILS_PATH + 'label_encoder.joblib')
+            label_encoder = joblib.load(SETFIT_MODELS_PATH + self.model_path + '/label_encoder.joblib')
             return label_encoder
         except Exception as e:
             print(f"Error loading label encoder: {e}")
