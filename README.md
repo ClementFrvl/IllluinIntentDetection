@@ -95,6 +95,31 @@ Available TF-IDF Models: ['tfidf_sgd', 'tfidf_logreg_default', 'tfidf_logreg_big
 Use 'python main.py <command> -h' for more information on a command.
 ```
 
+### Training Models
+
+**SetFit Classifier**:
+```bash
+python3 main.py train-setfit 
+   --dataset_path your_dataset_path
+   --save_to your_model_name
+   --text_column text_column_name
+   --label_column label_column_name
+   --model your_model_name
+   --setfit_params all_params (dict)
+```
+
+**TF-IDF Classifier**:
+```bash
+python3 main.py train-setfit 
+   --dataset_path your_dataset_path
+   --save_to your_model_name
+   --text_column text_column_name
+   --label_column label_column_name
+   --classifier your_sklearn_classifier
+   --tfidf_params all_params (dict)
+   --classifier_params all_classifier_params (dict)
+```
+
 ### Predicting Text Labels
 
 ```bash
