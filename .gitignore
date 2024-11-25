@@ -6,4 +6,7 @@ tests/
 
 exploration/checkpoint*
 exploration/setfit_models/
+exploration/tmp*
+
+models/local_models/
 
