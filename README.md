@@ -15,6 +15,7 @@ The CLI allows you to train, evaluate, and make predictions using either classif
 - [Installation](#installation)
 - [Usage](#usage)
   - [Displaying Help](#displaying-help)
+  - [Training Models](#training-models)
   - [Predicting Text Labels](#predicting-text-labels)
   - [Evaluating Models](#evaluating-models)
 - [Contributing](#contributing)
@@ -205,4 +206,13 @@ travel_suggestion       1.00      0.62      0.77         8
 
 ## Contributing
 
-TODO
+Contributions are welcome! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+You can contact me at c.florval@gmail.com or connect with me on [LinkedIn](https://www.linkedin.com/in/clement-florval/).
+```
