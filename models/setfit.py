@@ -29,6 +29,9 @@ class SetfitClassifier(TextClassifier):
             else:
                 print(f"Loading local model from: {SETFIT_MODELS_PATH + self.model_path}")
                 model = SetFitModel.from_pretrained(SETFIT_MODELS_PATH + self.model_path)
+
+                # Save model locally
+                model.save_pretrained(SETFIT_MODELS_PATH + self.model_path)
             return model
         except Exception as e:
             print(f"Error loading model: {e}")

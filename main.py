@@ -12,7 +12,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Text Classifier CLI",
         formatter_class=argparse.RawTextHelpFormatter,
-        epilog=f"Available SetFit Models: {setfit_models}\nAvailable TF-IDF Models: {tfidf_models}"
+        epilog=f"Available SetFit Models: {setfit_models}\nAvailable TF-IDF Models: {tfidf_models}\n\nUse 'python main.py <command> -h' for more information on a command."
     )
     subparsers = parser.add_subparsers(dest='command', help='Commands')
 
