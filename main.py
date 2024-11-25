@@ -11,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="SetFit Text Classifier CLI",
         formatter_class=argparse.RawTextHelpFormatter,
-        epilog=f"Local Models:\n  " + "\n - ".join(available_models)
+        epilog=f"Local Models:\n - " + "\n - ".join(available_models)
     )
     subparsers = parser.add_subparsers(dest='command', help='Commands')
 
@@ -39,7 +39,7 @@ def main():
         predictions = classifier.predict(args.texts)
         for text, pred in zip(args.texts, predictions):
             print(f"Input Text: {text}")
-            print(f"Predicted Label: {pred}\n")
+            print(f"Predicted Label: {pred}")
 
     elif args.command == 'evaluate':
         dataset = classifier.load_dataset(args.csv_file, args.text_column, args.label_column)

@@ -1,14 +1,11 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from setfit import SetFitModel
-from utils.constants import DATA_PATH, SETFIT_MODELS, MODELS_PATH, UTILS_PATH
-import argparse
-import csv
+from utils.constants import DATA_PATH, MODELS_PATH, UTILS_PATH
 import sys
 from dataclasses import dataclass
 from typing import List, Dict, Any
 import time
-import numpy as np
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 from setfit import SetFitModel
 import joblib
@@ -30,11 +27,10 @@ class TextClassifier:
 
     @staticmethod
     def get_available_models() -> list:
-        return SETFIT_MODELS
+        return os.listdir(MODELS_PATH)
 
     def load_model(self) -> SetFitModel:
         try:
-            # Check if the folder exists
             if not os.path.exists(MODELS_PATH + self.model_path):
                 print(f"Model not saved locally, checking Hugging Face Hub for model: {self.model_path}")
                 model = SetFitModel.from_pretrained(self.model_path)

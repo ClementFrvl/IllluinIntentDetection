@@ -1,0 +1,76 @@
+text,label
+"pouvez-vous me dire comment dire «je ne parle pas beaucoup espagnol», en espagnol",translate
+dites-moi comment dire: «c'est une belle matinée» en italien,translate
+"si j'étais japonais, comment dirais-je que je suis touriste",translate
+comment dire «hôtel» en finnois,translate
+"j'ai besoin que vous traduisiez la phrase, «nous y serons bientôt» en portugais",translate
+veuillez me dire comment demander un taxi en français,translate
+comment dire bonjour en anglais,translate
+la *country* a-t-elle des alertes de voyage que je devrais être conscientes,travel_alert
+y a-t-il des alertes de voyage pour la *country*,travel_alert
+y a-t-il une alerte de voyage pour la *country*,travel_alert
+est-il sûr de se rendre en *country*,travel_alert
+parlez-moi des alertes de voyage émises pour l'*country*,travel_alert
+y a-t-il des nouvelles sur le vol *flight_number*,flight_status
+quand allons-nous commencer à monter à bord de mon vol prévu,flight_status
+quand mon vol décollera-t-il,flight_status
+quand mon vol atterrira-t-il,flight_status
+quelle est la porte d'embarquement pour mon vol *flight_number*,flight_status
+quand vais-je arriver à destination,flight_status
+localiser les bagages perdus de flight america airlines à o'hare,lost_luggage
+perte des bagages sur flight america airlines à o'hare,lost_luggage
+je pense que mes bagages ont été perdus,lost_luggage
+"mes bagages sont manquants, j'étais sur le vol frontier *flight_number* depuis seattle",lost_luggage
+"aide, j'ai perdu mes bagages",lost_luggage
+savez-vous qui je devrais contacter car mes valises ne sont pas arrivées,lost_luggage
+à qui dois-je me plaindre que mes bagages n'arrivent pas à l'aéroport,lost_luggage
+veuillez suggérer des activités touristiques amusantes à tokyo,travel_suggestion
+"si je vais à evans, que dois-je faire",travel_suggestion
+quels sont les bons restaurants à chicago,travel_suggestion
+où devrais-je passer mon temps libre,travel_suggestion
+que puis-je faire à nashville,travel_suggestion
+donnez-moi une liste de choses à faire à orlando,travel_suggestion
+où est la meilleure cave du sud de la *country*,travel_suggestion
+y a-t-il des activités touristiques amusantes en *country*,travel_suggestion
+voulez-vous me faire part des restrictions de bagage à main pour *airline*,carry_on
+restrictions de cabine pour les *country*,carry_on
+qu'est-ce que je suis autorisé à prendre en cabine avec *airline*,carry_on
+y a-t-il une limite de poids pour mon bagage à main,carry_on
+combien de bagages à main puis-je prendre pendant un vol avec *airline* pour lax,carry_on
+quelles sont les règles concernant les bagages à main pour les vols *airline*,carry_on
+y a-t-il une limite de poids de bagage cabine,carry_on
+dois-je payer pour mes bagages à main,carry_on
+réservez-moi une chambre du 11 au 15 novembre à cali,book_hotel
+trouvez-moi un endroit où séjourner à cali du 11 au 15 novembre,book_hotel
+quels hôtels ont des critiques décentes à bangor,book_hotel
+veuillez me trouver une chambre d'hôtel pour 4 personnes du lundi au mercredi à lakewood,book_hotel
+"trouvez un hôtel columbus, ohio avec de bonnes critiques",book_hotel
+"s'il vous plaît, aidez-moi à réserver un endroit où séjourner à pittsburgh du lundi au vendredi",book_hotel
+j'ai besoin d'une chambre d'hôtel assez grande pour 4 personnes du lundi au mercredi à lakewood,book_hotel
+trouvez-moi des vols aller-retour de lax vers sfox,book_flight
+réservez un vol de chicago à dc lundi et revenant mercredi,book_flight
+je recherche un vol aller-retour de aaf à dia du 23 février au 28 février,book_flight
+pourriez-vous faire une réservation de vol avec air *airline* d'orlando à londres,book_flight
+j'ai besoin de réserver un vol aller-retour de dallas à los angeles du 2 au 10 mars,book_flight
+je voudrais savoir quels vols sont disponibles sur el paso à dallas le 10 juin pour moins de 300 $,book_flight
+combien coûte des frais de découvert pour la banque,out_of_scope
+quelle taille d'essuie-glace cette voiture prend-t-elle,out_of_scope
+quel est le plus grand état des *country*,out_of_scope
+quelle est la compagnie aérienne la plus populaire,out_of_scope
+combien de planètes avons-nous découvert,out_of_scope
+combien de côtés dans un hexagone,out_of_scope
+combien de temps dure l'hiver,out_of_scope
+qui est l'entraîneur des chicago bulls,out_of_scope
+combien d'oscars ont gagné les films star wars,out_of_scope
+veuillez trouver la capitale du *country* ,out_of_scope
+qui est le personnage le plus effrayant de start trek,out_of_scope
+quelle est la durée de vie de la batterie moyenne d'un téléphone android,out_of_scope
+quand camus est-il mort,out_of_scope
+quand nintendo a-t-il été créé,out_of_scope
+quel personnage marvel est apparu dans le plus de films,out_of_scope
+quels sont les avantages de terminer le lycée,out_of_scope
+pouvez-vous me dire à quelle vitesse moyenne l'avion vers la californie va,out_of_scope
+est-il possible de louer une voiture à la laguardia du mardi au vendredi,out_of_scope
+que vaut un dollar au *country*,out_of_scope
+quel est le taux de change entre l'usd et l'euro,out_of_scope
+pouvez-vous me dire le fuseau horaire à san francisco,out_of_scope
